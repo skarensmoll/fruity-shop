@@ -1,0 +1,18 @@
+.Header {
+  text-align: left;
+  margin: 16px 0;
+
+  &__list {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  li {
+    list-style: none;
+  }
+  ul {
+    margin: 0;
+  }
+}

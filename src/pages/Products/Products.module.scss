@@ -1,0 +1,15 @@
+.Banner {
+  background-color: #74EBD5;
+  background-image: linear-gradient(90deg, #74EBD5 0%, #9FACE6 100%);
+  z-index: -1;
+  width: 100%;
+  height: 200px;
+  position: fixed;
+  top: 0;
+}
+
+.ListProducts {
+  max-width: 80%;
+  margin: auto;
+  margin-top: 32px;
+}

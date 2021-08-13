@@ -1,0 +1,22 @@
+.CartSummary {
+  background-color: #ffffff73;
+  padding: 24px;
+  border-radius: 32px;
+  justify-content: space-between;
+  margin: 0 16px;
+  cursor: pointer;
+
+  &__title,
+  &__value {
+    margin-left: 16px;
+  }
+
+  &__value {
+    padding: 8px 24px;
+    background-color: #ffffff73;
+    border-radius: 24px;
+    font-weight: 600;
+    animation: animate infinite 3s;
+  }
+}
+
