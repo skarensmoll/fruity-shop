@@ -18,6 +18,10 @@ const Products = () => {
 
   const { onChangeNumProducts } = useContext(ProductContext)
 
+  useEffect(() => {
+    onChangeNumProducts(productState.totalSum);
+  }, [productState.totalSum, onChangeNumProducts])
+
   const changeQuantityHandler = (productId, quantity) => {
     productDispatcher({ type: CHANGE_QUANTITY_PRODUCT, productId, quantity });
   }
@@ -30,7 +34,6 @@ const Products = () => {
   const listProductCards = () => {
     console.log('listing products', products)
     const productIds = Object.keys(products);
-    onChangeNumProducts(totalSum);
 
     const productCards = productIds.map(id => {
       const product = products[id];
