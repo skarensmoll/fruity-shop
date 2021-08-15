@@ -1,14 +1,17 @@
-import {ProductContext} from './ProductContext';
-import React, {useState} from 'react';
+import { ProductContext } from './ProductContext';
+import React, { useState } from 'react';
 
-const GlobalContext = ({children})=> {
-  const [numProducts, setNumProducts] = useState(0)
+const GlobalContext = ({ children }) => {
+  const [numProducts, setNumProducts] = useState(0);
+  const [showSummaryProds, setShowSummaryProds] = useState(false);
 
   return (
     <ProductContext.Provider value={{
       numProducts: numProducts,
-      onChangeNumProducts: (quantity)=> { setNumProducts(quantity) }}
-      }>
+      showSummaryProds: showSummaryProds,
+      onShowSummaryProds: (value) => setShowSummaryProds(value),
+      onChangeNumProducts: (quantity) => { setNumProducts(quantity) }
+    }}>
       {children}
     </ProductContext.Provider>
   )

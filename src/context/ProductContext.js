@@ -2,8 +2,10 @@ import React from 'react';
 
 const ProductContext = React.createContext({
   numProducts: 0,
-  onChangeNumProducts: ()=>{}
+  showSummaryProds: false,
+  onChangeNumProducts: () => { },
+  onShowSummaryProds: () => { }
 });
 
-export {ProductContext}
+export { ProductContext }
 

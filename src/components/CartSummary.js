@@ -4,9 +4,10 @@ import ShoppingCartLogo from '../icons/ShoppingCart.svg';
 import styles from './CartSummary.module.scss';
 
 const CartSummary = () => {
-  const { numProducts } = useContext(ProductContext)
+  const { numProducts, onShowSummaryProds } = useContext(ProductContext);
   return (
-    <div className={styles.CartSummary}>
+    <div className={styles.CartSummary}
+      onClick={() => onShowSummaryProds(true)}>
       <img className={styles.CartSummary__img} src={ShoppingCartLogo} alt='Shopping Cart Logo' />
       <span className={styles.CartSummary__title}>Your Cart</span>
       <span className={styles.CartSummary__value}>{numProducts}</span>
