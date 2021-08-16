@@ -9,7 +9,7 @@ const ListProductCart = ({ products, totalSum, onAddNum, onClose }) => {
   const listProductsCards = productIds.map(prodId => {
     const product = products[prodId];
     return (
-      <div className={styles.ProductCard}
+      <li className={styles.ProductCard}
         key={prodId}>
         <div className={styles.ProductCard__description}>
           <h3>{product.title}</h3>
@@ -28,13 +28,13 @@ const ListProductCart = ({ products, totalSum, onAddNum, onClose }) => {
           <Button className={styles.ProductCard__btn}
             onClick={() => { onAddNum(prodId, 1) }}>+</Button>
         </div>
-      </div>
+      </li>
     );
   });
 
   return (
     <div className={styles.ProductSummary}>
-      {listProductsCards}
+      <ul>{listProductsCards}</ul>
       <div className={styles.ProductSummary__total}>
         <h3 className={styles.ProductSummary__label}>Total Amount:</h3>
         <h3 className={styles.ProductSummary__amount}>{`${totalSum} €`}</h3>

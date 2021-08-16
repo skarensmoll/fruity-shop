@@ -19,8 +19,8 @@ const Products = () => {
   const { onChangeNumProducts } = useContext(ProductContext)
 
   useEffect(() => {
-    onChangeNumProducts(productState.totalSum);
-  }, [productState.totalSum, onChangeNumProducts])
+    onChangeNumProducts(totalSum);
+  }, [totalSum, onChangeNumProducts])
 
   const changeQuantityHandler = (productId, quantity) => {
     productDispatcher({ type: CHANGE_QUANTITY_PRODUCT, productId, quantity });
