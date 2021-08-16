@@ -1,9 +1,9 @@
-import React, { useContext } from 'react';
-import { ProductContext } from '../../context/ProductContext';
-import { Dialog, Button } from '../../components/UI';
-import styles from './ProductSummary.module.scss';
 
-const ProductSummaryContent = ({ products, totalSum, onAddNum, onClose }) => {
+import styles from './ListProductCart.module.scss';
+import { Button } from '../UI';
+
+
+const ListProductCart = ({ products, totalSum, onAddNum, onClose }) => {
   const productIds = Object.keys(products);
 
   const listProductsCards = productIds.map(prodId => {
@@ -48,17 +48,4 @@ const ProductSummaryContent = ({ products, totalSum, onAddNum, onClose }) => {
   );
 };
 
-const ProductSummary = (props) => {
-  const { showSummaryProds, onShowSummaryProds } = useContext(ProductContext);
-  return (
-    <>
-      {showSummaryProds &&
-        <Dialog onBackDropClicked={() => onShowSummaryProds(false)}>
-          <ProductSummaryContent {...props} onClose={() => { onShowSummaryProds(false) }} />
-        </Dialog>
-      }
-    </>
-  )
-}
-
-export default ProductSummary;
+export default ListProductCart;

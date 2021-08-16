@@ -16,7 +16,9 @@ const ModalContainer = ({ children, onBackDropClicked }) => {
 
 const Dialog = ({ children, onBackDropClicked }) => {
   return ReactDOM.createPortal(
-    <ModalContainer onBackDropClicked={onBackDropClicked}>{children}</ModalContainer>,
+    <ModalContainer onBackDropClicked={onBackDropClicked}>
+      {children}
+    </ModalContainer>,
     document.getElementById('dialog-content')
   )
 }

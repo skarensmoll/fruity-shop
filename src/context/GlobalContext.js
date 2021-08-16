@@ -1,4 +1,4 @@
-import { ProductContext } from './ProductContext';
+import { ProductContext } from './product-context';
 import React, { useState } from 'react';
 
 const GlobalContext = ({ children }) => {

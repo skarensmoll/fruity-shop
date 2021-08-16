@@ -1,16 +1,16 @@
 import './App.css';
 import Home from './pages/Products/Products';
-import Header from './components/Header';
+import Header from './components/Layout/Header';
 import GlobalContext from './context/GlobalContext';
 
 
 function App() {
   return (
     <GlobalContext>
-      <div className="App">
-        <Header />
+      <Header />
+      <main>
         <Home />
-      </div>
+      </main>
     </GlobalContext>
   );
 }

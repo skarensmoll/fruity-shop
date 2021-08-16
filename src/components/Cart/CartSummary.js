@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
-import { ProductContext } from '../context/ProductContext';
-import ShoppingCartLogo from '../icons/ShoppingCart.svg';
+import { ProductContext } from '../../context/product-context';
+import ShoppingCartLogo from '../../icons/ShoppingCart.svg';
 import styles from './CartSummary.module.scss';
 
 const CartSummary = () => {

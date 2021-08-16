@@ -1,6 +1,6 @@
 
 import React, {useState} from 'react';
-import { Button, Input} from './UI';
+import { Button, Input} from '../UI';
 import styles from './ProductCard.module.scss';
 
 const ProductCard = (props) => {
@@ -8,7 +8,7 @@ const ProductCard = (props) => {
   const [quantity, setQuantity] = useState(props.quantity);
 
   return (
-    <div className={styles.ProductCard}>
+    <li className={styles.ProductCard}>
       <div className={styles.ProductCard__description}>
         <h3>{props.title}</h3>
         <p>{props.description}</p>
@@ -22,7 +22,7 @@ const ProductCard = (props) => {
           id={props.id} />
         <Button onClick={() => { props.onAdd(props.id, quantity) }}>+ Add</Button>
       </div>
-    </div>
+    </li>
   )
 }
 export default ProductCard;

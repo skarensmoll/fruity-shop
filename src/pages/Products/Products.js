@@ -1,14 +1,14 @@
 import React, { useReducer, useContext, useEffect } from 'react';
 import styles from './Products.module.scss';
-import ProductCard from '../../components/ProductCard';
+import ProductCard from '../../components/Product/ProductCard';
 import {
   productReducer,
   initialListProducts,
   CHANGE_QUANTITY_PRODUCT,
   ADD_ONE_PRODUCT
 } from '../../reducers/products';
-import { ProductContext } from '../../context/ProductContext';
-import ProductSummary from './ProductSummary';
+import { ProductContext } from '../../context/product-context';
+import ProductCart from '../../components/ProductCart/ProductCart';
 
 
 const Products = () => {
@@ -32,7 +32,6 @@ const Products = () => {
 
 
   const listProductCards = () => {
-    console.log('listing products', products)
     const productIds = Object.keys(products);
 
     const productCards = productIds.map(id => {
@@ -58,16 +57,19 @@ const Products = () => {
   return (
     <>
       {console.log('rendering productsummary module')}
-      <div className={styles.Products}>
+      <section className={styles.Products}>
         <div className={styles.Banner}>
         </div>
-        <div className={styles.ListProducts}>
+        <ul className={styles.ListProducts}>
           {listProductCards()}
-        </div>
-      </div>
-      <ProductSummary products={products}
+        </ul>
+      </section>
+      <ProductCart
+        products={products}
         totalSum={totalSum}
-        onAddNum={(productId, quantity) => { addOneProductHandler(productId, quantity); }} />
+        onAddNum={(productId, quantity) => {
+          addOneProductHandler(productId, quantity);
+        }} />
     </>
   )
 }

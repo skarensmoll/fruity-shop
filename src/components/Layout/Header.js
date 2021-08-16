@@ -1,5 +1,5 @@
 import styles from './Header.module.scss';
-import CartSummary from './CartSummary';
+import CartSummary from '../Cart/CartSummary';
 
 const Header = () => {
   return (
@@ -12,7 +12,6 @@ const Header = () => {
           </li>
         </ul>
       </nav>
-
     </header>
   )
 };
