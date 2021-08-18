@@ -38,7 +38,6 @@ const Products = () => {
 
   return (
     <>
-      {console.log('rendering productsummary module')}
       <section className={styles.Products}>
         <div className={styles.Banner}>
         </div>

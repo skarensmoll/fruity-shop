@@ -12,7 +12,7 @@ const CartSummary = () => {
     setCartClass(`${styles.CartSummary} ${styles.CartSummary__bump}`);
     const timeOut =  setTimeout(()=> {
       setCartClass(`${styles.CartSummary}`);
-    }, 300)
+    }, 300);
 
     return () => { clearTimeout(timeOut) }
   }, [numProducts])
@@ -20,7 +20,6 @@ const CartSummary = () => {
   return (
     <div className={cartClass}
       onClick={() => onShowSummaryProds(true)}>
-        {console.log('executing')}
       <img className={styles.CartSummary__img} src={ShoppingCartLogo} alt='Shopping Cart Logo' />
       <span className={styles.CartSummary__title}>Your Cart</span>
       <span className={styles.CartSummary__value}>{numProducts}</span>
