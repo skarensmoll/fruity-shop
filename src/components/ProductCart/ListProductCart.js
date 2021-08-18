@@ -24,9 +24,9 @@ const ListProductCart = ({ products, totalSum, onAddNum, onClose }) => {
         </div>
         <div className={styles.ProductCard__controls}>
           <Button className={styles.ProductCard__btn}
-            onClick={() => { onAddNum(prodId, -1) }}>-</Button>
+            onClick={() => { onAddNum(prodId,  product.quantity - 1) }}>-</Button>
           <Button className={styles.ProductCard__btn}
-            onClick={() => { onAddNum(prodId, 1) }}>+</Button>
+            onClick={() => { onAddNum(prodId, product.quantity + 1) }}>+</Button>
         </div>
       </li>
     );

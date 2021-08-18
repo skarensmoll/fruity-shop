@@ -1,41 +1,32 @@
 export const ADD_ONE_PRODUCT = 'ADD_ONE_PRODUCT';
 export const CHANGE_QUANTITY_PRODUCT = 'CHANGE_QUANTITY_PRODUCT';
 
-const updateTotalSum = (state, productId, quantity) => {
-  const prod = state.products[productId];
-  let preTotalSum = state.totalSum - prod.quantity;
-  return preTotalSum + quantity;
-}
-
 const productReducer = (state, action) => {
   switch (action.type) {
-    case ADD_ONE_PRODUCT:
-      const productToUpdate = { ...state.products[action.productId] };
-      productToUpdate.quantity += action.quantity;
+    case CHANGE_QUANTITY_PRODUCT:
+      const productIds = Object.keys(state.products);
+      let numProducts = 0;
+      let totalSum = 0;
 
-      const newProds = {
+      const newProducts =   {
         ...state.products,
         [action.productId]: {
-          ...productToUpdate
+          ...state.products[action.productId],
+          quantity: action.quantity
         }
       };
 
+      productIds.forEach(p => {
+        const product = newProducts[p];
+
+        numProducts += product.quantity;
+        totalSum += product.quantity * product.price;
+      });
+
       return {
-        products: {
-          ...newProds
-        },
-        totalSum: state.totalSum + action.quantity
-      };
-    case CHANGE_QUANTITY_PRODUCT:
-      return {
-        products: {
-          ...state.products,
-          [action.productId]: {
-            ...state.products[action.productId],
-            quantity: action.quantity
-          }
-        },
-        totalSum: updateTotalSum(state, action.productId, action.quantity)
+        products: newProducts,
+        numProducts,
+        totalSum
       }
 
     default:
@@ -55,16 +46,17 @@ export const initialListProducts = {
       title: 'Pear',
       description: 'Fresh and green Pear',
       price: 20,
-      quantity: 1
+      quantity: 0
     },
     [Math.random()]: {
       title: 'Grape',
       description: 'Several grapes',
       price: 5,
-      quantity: 2
+      quantity: 0
     }
   },
-  totalSum: 3
+  totalSum: 0,
+  numProducts: 0
 };
 
 export { productReducer };
