@@ -1,10 +1,14 @@
 import React from 'react';
 import styles from './Button.module.scss';
 
-const Button = ({ onClick, children, className }) => {
+const Button = ({ onClick, children, className, disabled }) => {
+  const classes = `${styles.Button} ${className ? className : ''}`;
+console.log('disabled', disabled);
   return (
-    <button className={`${styles.Button} ${className}`} onClick={onClick}>
-      {children}
+    <button className={classes}
+      onClick={onClick}
+      disabled={ disabled === true ? 'disabled' : '' }>
+      {children} {disabled}
     </button>
   )
 }

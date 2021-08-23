@@ -6,7 +6,6 @@
 
 .Button {
   margin: 10px;
-  padding: 15px 45px;
   text-align: center;
   text-transform: uppercase;
   transition: 0.5s;
@@ -23,4 +22,8 @@
   /* change the direction of the change here */
   color: #fff;
   text-decoration: none;
+}
+
+button:disabled {
+  background-image: linear-gradient(to right, #9a9192 0%, #dff0f9 51%, #837e7e 100%);
 }

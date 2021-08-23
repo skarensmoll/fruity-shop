@@ -1,0 +1,25 @@
+.Control {
+  margin: auto;
+  margin-bottom: 24px;
+  max-width: 400px;
+  input {
+    min-width: 250px;
+    border: 1px solid #ccc2c2;
+    padding: 8px;
+  }
+
+  p {
+    display: none;
+  }
+
+  &--invalid {
+    p {
+      color: red;
+      display: block;
+    }
+
+    input {
+      background-color: rgb(238, 164, 164);
+    }
+  }
+}
