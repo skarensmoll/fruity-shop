@@ -13,16 +13,18 @@ const Control = ({
   onInvalidMsg,
 }) => {
   return (
-    <div className={ `${styles.Control} ${ (touched && !valid) && styles['Control--invalid']}`  }>
-      <label htmlFor={id}>{label}:</label>
-      <input
-        type={type}
-        id={id}
-        name={id}
-        value={value}
-        onChange={onChange}
-        onBlur={onBlur}
-      ></input>
+    <div className={`${styles.Control} ${(touched && !valid) && styles['Control--invalid']}`}>
+      <div className={styles.Control__container}>
+        <label htmlFor={id}>{label}:</label>
+        <input
+          type={type}
+          id={id}
+          name={id}
+          value={value}
+          onChange={onChange}
+          onBlur={onBlur}
+        ></input>
+      </div>
       <p>{onInvalidMsg}</p>
     </div>
   );

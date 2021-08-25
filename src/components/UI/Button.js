@@ -3,7 +3,6 @@ import styles from './Button.module.scss';
 
 const Button = ({ onClick, children, className, disabled }) => {
   const classes = `${styles.Button} ${className ? className : ''}`;
-console.log('disabled', disabled);
   return (
     <button className={classes}
       onClick={onClick}

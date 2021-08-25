@@ -46,7 +46,6 @@ const OrderForm = ({ onSubmit }) => {
 
   return (
     <form className={styles.OrderForm} onSubmit={handleSubmission}>
-      {console.log('reloading')}
       <Control
         id="name"
         label="Name"
