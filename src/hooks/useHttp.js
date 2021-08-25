@@ -1,6 +1,4 @@
-import {useState} from 'react';
-
-const API_URL = 'https://react-my-burger-34f7d.firebaseio.com/fruitOrder.json';
+import {useState, useCallback} from 'react';
 
 export const HTTP_VERBS = {
   PUT: 'PUT',
@@ -9,10 +7,15 @@ export const HTTP_VERBS = {
   DELETE: 'DELETE'
 }
 
+export const API = {
+  FRUITS: 'https://react-my-burger-34f7d.firebaseio.com/fruits.json',
+  ORDERS: 'https://react-my-burger-34f7d.firebaseio.com/fruitOrder.json'
+}
+
 const useHttp = ( )=> {
   const [loading, setLoading] = useState(false);
 
-  const sendRequest = async (type, data) => {
+  const sendRequest = useCallback(async (type, api, data) => {
     setLoading(true);
     let requestOptions = { };
 
@@ -32,11 +35,11 @@ const useHttp = ( )=> {
     }
 
 
-    const response  = await fetch(API_URL, requestOptions);
+    const response  = await fetch(api, requestOptions);
 
     setLoading(false);
     return response.json();
-  }
+  }, []);
 
 
   return [loading, sendRequest];

@@ -1,6 +1,8 @@
 import ProductCard from './ProductCard';
 
 const ListProducts = ({ products, onAddQuantity }) => {
+  if(!products) return [];
+
   const productIds = Object.keys(products);
 
   return productIds.map(id => {

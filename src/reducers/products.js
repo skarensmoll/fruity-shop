@@ -1,5 +1,6 @@
 export const ADD_ONE_PRODUCT = 'ADD_ONE_PRODUCT';
 export const CHANGE_QUANTITY_PRODUCT = 'CHANGE_QUANTITY_PRODUCT';
+export const INITIALIZE_PRODUCTS = 'INITIALIZE_PRODUCTS';
 
 const productReducer = (state, action) => {
   switch (action.type) {
@@ -28,35 +29,16 @@ const productReducer = (state, action) => {
         numProducts,
         totalSum
       }
-
+    case INITIALIZE_PRODUCTS:
+      return {
+        products: action.products,
+        totalSum: 0,
+        numProducts: 0
+      }
     default:
       return state;
   }
 }
 
-export const initialListProducts = {
-  products: {
-    [Math.random()]: {
-      title: 'Apple',
-      description: 'Juicy Apple',
-      price: 34,
-      quantity: 0
-    },
-    [Math.random()]: {
-      title: 'Pear',
-      description: 'Fresh and green Pear',
-      price: 20,
-      quantity: 0
-    },
-    [Math.random()]: {
-      title: 'Grape',
-      description: 'Several grapes',
-      price: 5,
-      quantity: 0
-    }
-  },
-  totalSum: 0,
-  numProducts: 0
-};
 
 export { productReducer };

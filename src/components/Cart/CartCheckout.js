@@ -1,7 +1,7 @@
 import React, { useContext, useState, useEffect } from "react";
 import { Dialog, Loading } from "../UI";
 import { ProductContext } from "../../context/product-context";
-import { useHttp, HTTP_VERBS } from "../../hooks/useHttp";
+import { useHttp, HTTP_VERBS, API } from "../../hooks/useHttp";
 import ProductCart from "../../components/ProductCart/ProductCart";
 import { OrderForm } from "../../components/Product";
 
@@ -24,10 +24,11 @@ const CartCheckout = () => {
   const [loading, sendRequest] = useHttp();
 
   const handleOrderSubmission = (orderData) => {
-    sendRequest(HTTP_VERBS.POST, {
+    sendRequest(HTTP_VERBS.POST, API.ORDERS, {
       id: Math.random(),
       orderData,
       totalSum,
+      products
     }).then(res => {
       setCurrentStep(CART_STEPS.orderSuccessful);
       setTimeout(() => {

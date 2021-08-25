@@ -1,9 +1,10 @@
 import { ProductContext } from './product-context';
-import React, { useReducer, useState } from 'react';
+import React, { useReducer, useState, useCallback} from 'react';
+
 import {
   productReducer,
-  initialListProducts,
-  CHANGE_QUANTITY_PRODUCT
+  CHANGE_QUANTITY_PRODUCT,
+  INITIALIZE_PRODUCTS
 } from '../reducers/products';
 
 const GlobalContext = ({ children }) => {
@@ -11,15 +12,19 @@ const GlobalContext = ({ children }) => {
   const [showSummary, setShowSummary] = useState(false);
 
   const [productState, productDispatcher] =
-    useReducer(productReducer, initialListProducts);
+    useReducer(productReducer, {});
 
   const { products,
-          numProducts,
-          totalSum } = productState;
+    numProducts,
+    totalSum } = productState;
 
   const quantityDispatcher = (productId, quantity) => {
     productDispatcher({ type: CHANGE_QUANTITY_PRODUCT, productId, quantity });
   }
+
+  const initializeProdsDispatcher = (products) => {
+    productDispatcher({ type: INITIALIZE_PRODUCTS, products })
+  };
 
   return (
     <ProductContext.Provider value={{
@@ -27,8 +32,9 @@ const GlobalContext = ({ children }) => {
       totalSum: totalSum,
       products: products,
       showSummaryProds: showSummary,
-      onShowSummaryProds: () => { setShowSummary(prev => !prev) },
-      addQuantityHandler: (...args) => { quantityDispatcher(...args) }
+      onShowSummaryProds: useCallback(() => setShowSummary(prev => !prev), []),
+      addQuantityHandler: useCallback((...args) => quantityDispatcher(...args), []),
+      initializeProducts: useCallback((...args) => initializeProdsDispatcher(...args), [])
     }}>
       {children}
     </ProductContext.Provider>
