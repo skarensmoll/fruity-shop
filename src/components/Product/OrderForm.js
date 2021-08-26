@@ -9,7 +9,6 @@ const OrderForm = ({ onSubmit }) => {
 
   const handleSubmission = (e) => {
     e.preventDefault();
-
     onSubmit({
       name: nameValue,
       address: addressValue,

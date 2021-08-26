@@ -16,9 +16,12 @@ const CartCheckout = () => {
     showSummaryProds,
     totalSum,
     products,
+    onCleanProducts,
     addQuantityHandler,
     onShowSummaryProds,
+
   } = useContext(ProductContext);
+
 
   const [currentStep, setCurrentStep] = useState(CART_STEPS.summary);
   const [loading, sendRequest] = useHttp();
@@ -31,6 +34,7 @@ const CartCheckout = () => {
       products
     }).then(res => {
       setCurrentStep(CART_STEPS.orderSuccessful);
+      onCleanProducts(true);
       setTimeout(() => {
         onShowSummaryProds(false);
       }, 600)

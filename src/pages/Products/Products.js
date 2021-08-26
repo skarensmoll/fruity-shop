@@ -2,23 +2,16 @@ import React, { useContext, useEffect } from "react";
 import styles from "./Products.module.scss";
 import { ProductContext } from "../../context/product-context";
 import { ListProducts } from "../../components/Product";
-import { useHttp, HTTP_VERBS, API } from "../../hooks/useHttp";
 import { Loading } from '../../components/UI';
+import useProducts from '../../hooks/useProducts';
 
 const Products = () => {
   const {
     products,
     addQuantityHandler,
-    initializeProducts,
   } = useContext(ProductContext);
 
-  const [loading, sendRequest] = useHttp();
-
-  useEffect(() => {
-    sendRequest(HTTP_VERBS.GET, API.FRUITS).then(products => {
-      initializeProducts(products);
-    })
-  }, [sendRequest, initializeProducts])
+  const [loading] = useProducts();
 
   return (
     <>

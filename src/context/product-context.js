@@ -5,6 +5,8 @@ const ProductContext = React.createContext({
   totalSum: 0,
   products: {},
   showSummaryProds: false,
+  cleanProducts: true,
+  onCleanProducts: () => {},
   onShowSummaryProds: () => {},
   addQuantityHandler: () => {},
   initializeProducts: () => {},
